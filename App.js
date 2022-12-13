@@ -1,7 +1,7 @@
 
  import React, { useState } from "react";
- import { ScrollView, TouchableOpacity, KeyboardAvoidingView, SafeAreaView,TextInput, Button, Text, View, StyleSheet, Alert } from "react-native";
- import Task from './components/Task.js';
+ import { Image,ScrollView, TouchableOpacity, KeyboardAvoidingView, SafeAreaView,TextInput, Button, Text, View, StyleSheet, Alert } from "react-native";
+ import Medicines from './components/Medicines.js';
  const App = (props) => {
   const [task, setTask] = useState('');
   const [taskItems, setTaskItems] = useState([]);
@@ -18,7 +18,8 @@
           <Text style={styles.welcomeTextTwo}>Keep Track of Your Medicines</Text>
 
           <View style={styles.nextMed}>
-          
+            <Text style={styles.nextMedText1}><Image style={ styles.pillIcon} source={require('./components/image/pill.png')} /> Next Medicine</Text>
+            <Text style={styles.nextMedText2}>To be taken at 10:00pm</Text>
           </View>
         </View>
           <Text style={styles.sectionTitle}>Today's Medicines</Text>
@@ -28,7 +29,7 @@
           <View style={styles.items}>
             {
               taskItems.map((item, index) =>  {
-                return <Task key={index} text={item}/>
+                return <Medicines key={index} text={item}/>
               })
             }
           </View>
@@ -57,7 +58,7 @@
 
  const styles = StyleSheet.create({
    welcomeText: {
-    color: 'rgb(139,69,19)',
+    color: '#A0522D',
     fontSize: 20,
     fontWeight: 'bold',
     marginTop: 30,
@@ -75,6 +76,7 @@
   container: {
   flex:1,
   backgroundColor: 'rgb(246, 246, 246)',
+  
   },
   homeView:{
     height: 300,
@@ -91,6 +93,21 @@
     marginTop: 105,
     marginBottom: 20,
     backgroundColor: 'rgb(245, 242, 239)',
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center'
+  },
+  nextMedText1: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#A0522D',
+  },
+  nextMedText2: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    color: '#8B4513',
+    opacity: 0.3,
+    marginTop: 5
   },
   taskWrapper:{
     paddingTop: 80,
@@ -115,8 +132,8 @@
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    alignItems: 'center'
-  },
+    alignItems: 'center',
+    },
   input: {
     paddingVertical: 15,
     paddingHorizontal: 15,
@@ -139,7 +156,12 @@
   addText: {
     fontSize: 30,
     color: 'white'
-  }
+  },
+  pillIcon: {
+    width: 30,
+    height: 30,
+    marginRight: 5
+},
 
 });
  
